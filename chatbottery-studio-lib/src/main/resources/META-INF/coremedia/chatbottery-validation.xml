@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <import resource="classpath:com/coremedia/rest/cap/cap-rest-service.xml"/>
+  <import resource="classpath:com/coremedia/blueprint/base/settings/impl/bpbase-settings-services.xml" />
+     
+  <bean parent="contentTypeValidator">
+    <property name="contentType" value="Chatbottery" />
+    <property name="validators">
+      <list>
+        <bean class="com.coremedia.rest.validators.NotEmptyValidator">
+          <property name="property" value="src" />
+        </bean>
+        <bean class="com.coremedia.rest.validators.NotEmptyValidator">
+          <property name="property" value="dataObject" />
+        </bean>
+      </list>
+    </property>
+  </bean>
+
+</beans>

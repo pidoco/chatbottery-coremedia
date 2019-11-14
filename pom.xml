@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>Please enter your parents group id here</groupId>
+    <artifactId>extensions</artifactId>
+    <version>1-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>chatbottery</artifactId>
+
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>chatbottery-server</module>
+    <module>chatbottery-studio</module>
+    <module>chatbottery-studio-lib</module>
+    <module>chatbottery-cae</module>
+  </modules>
+
+</project>

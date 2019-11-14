@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editor:DocumentTabPanel
+        xmlns:fx="http://ns.adobe.com/mxml/2009"
+        xmlns:exml="http://www.jangaroo.net/exml/0.8"
+        xmlns="exml:ext.config"
+        xmlns:pidoco="exml:com.chatbottery.studio.config"
+        xmlns:bpforms="exml:com.coremedia.blueprint.studio.config"
+        xmlns:editor="exml:com.coremedia.cms.editor.sdk.config">
+  <fx:Metadata>
+    [ResourceBundle('com.coremedia.blueprint.studio.BlueprintDocumentTypes')]
+    [ResourceBundle('com.coremedia.blueprint.studio.BlueprintTabs')]
+  </fx:Metadata>
+  <fx:Script><![CDATA[
+    public static const xtype:String = "com.coremedia.blueprint.studio.forms.chatbotteryForm";
+
+    private var config:ChatbotteryForm;
+
+    public native function ChatbotteryForm(config:ChatbotteryForm = null);
+    ]]>
+  </fx:Script>
+
+  <editor:items>
+    <editor:DocumentForm title="{resourceManager.getString('com.chatbottery.studio.ChatbotteryPlugin', 'Chatbottery_content')}">
+      <editor:items>
+        <editor:PropertyFieldGroup title="Code source" itemId="chatbotteryCodeSource">
+          <editor:items>
+            <editor:StringPropertyField propertyName="src"/>
+          </editor:items>
+        </editor:PropertyFieldGroup>
+        <editor:PropertyFieldGroup title="Data source" itemId="chatbotteryDataSource">
+          <editor:items>
+            <editor:StringPropertyField propertyName="dataObject"/>
+            <editor:BooleanPropertyField bindTo="{config.bindTo}"
+                                         propertyName="openOnLoad"/>
+          </editor:items>
+        </editor:PropertyFieldGroup>
+        <editor:PropertyFieldGroup title="Position" itemId="chatbotteryPosition">
+          <editor:items>
+            <pidoco:PlacementSelector name="renderPosition"/>
+          </editor:items>
+        </editor:PropertyFieldGroup>
+      </editor:items>
+    </editor:DocumentForm>
+    <bpforms:MultiLanguageDocumentForm/>
+    <bpforms:MetaDataWithoutSearchableForm/>
+  </editor:items>
+
+</editor:DocumentTabPanel>

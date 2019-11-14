@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:LocalComboBox
+  xmlns:exml="http://www.jangaroo.net/exml/0.8"
+  xmlns:editor="exml:com.coremedia.cms.editor.sdk.config"
+  xmlns:fx="http://ns.adobe.com/mxml/2009"
+  xmlns:ui="exml:com.coremedia.ui.config"
+  itemId="chatbotteryPlacementSelector"
+  name="{config.name || 'renderPosition'}"
+  fieldLabel="{config.fieldLabel || resourceManager.getString('com.chatbottery.studio.ChatbotteryPlugin', 'Chatbottery_placement_label')}"
+  triggerAction="all"
+  encodeItems="true"
+  anchor="100%"
+  valueField="value"
+  displayField="label"
+  editable="false"
+  store="{[
+      ['inPlace', resourceManager.getString('com.chatbottery.studio.ChatbotteryPlugin', 'Chatbottery_placement_inPlace')],
+      ['bottomLeft', resourceManager.getString('com.chatbottery.studio.ChatbotteryPlugin', 'Chatbottery_placement_bottomLeft')],
+      ['bottomRight', resourceManager.getString('com.chatbottery.studio.ChatbotteryPlugin', 'Chatbottery_placement_bottomRight')]
+  ]}">
+  <fx:Script><![CDATA[
+  import com.coremedia.ui.data.ValueExpression;
+
+    public static const xtype:String = "com.chatbottery.studio.components.placementSelector";
+
+    private var config:PlacementSelector;
+
+    public native function PlacementSelector(config:PlacementSelector = null);
+
+    /**
+     * Contains the active content.
+     */
+    [Bindable]
+    public var bindTo:ValueExpression;
+
+    /**
+     * An optional ValueExpression which makes the component read-only if it is evaluated to true.
+     */
+    [Bindable]
+    public var forceReadOnlyValueExpression:ValueExpression;
+
+  ]]></fx:Script>
+  
+  <fx:Declarations>
+    <fx:String id="propertyName"/>
+  </fx:Declarations>
+
+  <ui:plugins exml:mode="append">
+    <ui:BindPropertyPlugin componentEvent="change"
+                           bindTo="{config.bindTo.extendBy('properties').extendBy(config.name)}"
+                           bidirectional="true"/>
+    <editor:BindDisablePlugin forceReadOnlyValueExpression="{config.forceReadOnlyValueExpression}"
+                              bindTo="{config.bindTo}"/>
+  </ui:plugins>
+</ui:LocalComboBox>
